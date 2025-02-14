@@ -117,13 +117,21 @@ class ArticleController extends Controller
                 "Nosy Sakatia", "Mghlv", "Morondava", "Toamgt"
             ];
     
-            // Appliquer le filtre
-            $query->where(function ($q) use ($filtreDestinations) {
-                foreach ($filtreDestinations as $destination) {
-                    $q->orWhere('destination', $destination);
-                }
-                $q->orWhere('destination', 'LIKE', 'Mg%');
-            });
+           // Appliquer le filtre
+        $query->where(function ($q) use ($filtreDestinations) {
+            foreach ($filtreDestinations as $destination) {
+                $q->orWhere('destination', $destination);
+            }
+            // Inclure aussi les destinations qui commencent par "Mg"
+            $q->orWhere('destination', 'LIKE', 'Mg%');
+        });
+
+        // Exclure les lignes avec shiptype = "Tug"
+        $query->where('ship_type', '!=', 'Tug');
+
+        // Exclure les lignes avec vessel_name = "TSARAVATSY", "AVISOA", "TS INDIAN OCEAN"
+        $query->whereNotIn('vessel_name', ['TSARAVATSY', 'AVISOA', 'TS INDIAN OCEAN']);
+
         } elseif ($filter === 'national') {
             // Filtrer uniquement les articles avec "Madagascar" et "Luxembourg"
             $query->whereIn('flag', ['Madagascar', 'Luxembourg']);
