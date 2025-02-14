@@ -12,7 +12,7 @@
         </div>
     @endsection
 <div class="container mt-4">
-    <h2>Liste des SITREPs</h2>
+    <h2>Liste des SITREPS</h2>
 
     <table class="table table-bordered table-hover table-striped">
         <thead class="table-dark">

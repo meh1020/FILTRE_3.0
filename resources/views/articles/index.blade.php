@@ -30,8 +30,8 @@
         <form action="{{ route('articles.filter') }}" method="GET" class="d-flex mb-3">
         <select name="filter" class="form-control me-2">
                 <option value="">Sélectionner un filtre</option>
-                <option value="destinationmada" {{ request('filter') == 'destinationmada' ? 'selected' : '' }}>Destination mada</option>
-                <option value="national" {{ request('filter') == 'national' ? 'selected' : '' }}>National</option>
+                <option value="destinationmada" {{ request('filter') == 'destinationmada' ? 'selected' : '' }}>Destination mada internationnal</option>
+                <option value="national" {{ request('filter') == 'national' ? 'selected' : '' }}>Destination mada national</option>
                 <option value="international" {{ request('filter') == 'international' ? 'selected' : '' }}>International</option>
             </select>
             <button type="submit" class="btn btn-info"><i class="fas fa-filter"></i> Filtrer</button>
