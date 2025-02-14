@@ -22,7 +22,7 @@ class ArticleController extends Controller
     }
 
 
-    public function importCSV(Request $request)
+    public function importCSV(Request $request, $id)
     {
         $file = $request->file('csv_file');
         set_time_limit(1200);
@@ -62,6 +62,7 @@ class ArticleController extends Controller
                 if (count($articles) >= 1000) {
                     Article::insert($articles);
                     $articles = [];
+                    
                 }
             }
 

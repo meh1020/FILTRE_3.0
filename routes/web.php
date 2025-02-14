@@ -27,6 +27,19 @@ Route::get('/export-listmada', [ListeMadaController::class, 'export'])->name('li
 Route::post('/import-listmada', [ListeMadaController::class, 'import'])->name('listmadas.import');
 
 
+use App\Http\Controllers\ZoneController;
+
+Route::get('/zone/{id}', [ZoneController::class, 'show'])->name('zone.show');
+
+
+Route::get('/zones', [ZoneController::class, 'index'])->name('zones.index');
+
+Route::post('/import-articles/{id}', [ZoneController::class, 'importCSV'])->name('zone.import');
+
+
+
+
+
 
 
 Route::get('/export-pdf_nav/{id}', [AvurnavController::class, 'exportPDF'])->name('export.pdf');

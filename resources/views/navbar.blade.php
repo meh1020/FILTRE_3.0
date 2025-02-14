@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("articles.index")}}">Liste des données</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route("zones.index")}}">Zone</a>
+                </li>
             </ul>
         </div>
     </div>
