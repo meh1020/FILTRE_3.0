@@ -132,6 +132,9 @@ class ArticleController extends Controller
         // Exclure les lignes avec vessel_name = "TSARAVATSY", "AVISOA", "TS INDIAN OCEAN"
         $query->whereNotIn('vessel_name', ['TSARAVATSY', 'AVISOA', 'TS INDIAN OCEAN']);
 
+        // Exclure les lignes avec flag = "Madagascar"
+        $query->where('flag', '!=', 'Madagascar');
+
         } elseif ($filter === 'national') {
             // Filtrer uniquement les articles avec "Madagascar" et "Luxembourg"
             $query->whereIn('flag', ['Madagascar', 'Luxembourg']);
@@ -221,6 +224,15 @@ class ArticleController extends Controller
                 }
                 $q->orWhere('destination', 'LIKE', 'Mg%');
             });
+
+                // Exclure les lignes avec shiptype = "Tug"
+            $query->where('ship_type', '!=', 'Tug');
+
+            // Exclure les lignes avec vessel_name = "TSARAVATSY", "AVISOA", "TS INDIAN OCEAN"
+            $query->whereNotIn('vessel_name', ['TSARAVATSY', 'AVISOA', 'TS INDIAN OCEAN']);
+
+            // Exclure les lignes avec flag = "Madagascar"
+            $query->where('flag', '!=', 'Madagascar');
         } elseif ($filter === 'national') {
             $query->whereIn('flag', ['Madagascar', 'Luxembourg']);
         } elseif ($filter === 'international') {
